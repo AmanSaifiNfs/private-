@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h3>First, play this </h3>
+        <audio id="main-audio" controls>
+            <source src="main.aac">
+        </audio>
+        <h1>Kya me aap ka intzar karu ?</h1>
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">Yes</button>
+            <button class="no-button" onclick="handleNoClick()">No</button>
+        </div>
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        </div>
+        <audio id="bg-music" src="music.mpeg" loop></audio>
+    </div>
+    <button id="music-toggle">Pause Music</button>
+    <script>
+        const music = document.getElementById('bg-music');
+        const mainAudio = document.getElementById('main-audio');
+        const toggleBtn = document.getElementById('music-toggle');
+
+        // Pause other audio when one plays
+        mainAudio.addEventListener('play', () => {
+            if (!music.paused) music.pause();
+        });
+        music.addEventListener('play', () => {
+            if (!mainAudio.paused) mainAudio.pause();
+        });
+
+        // Play music after user interaction (required by most browsers)
+        function startMusic() {
+            music.play();
+            document.removeEventListener('click', startMusic);
+        }
+        document.addEventListener('click', startMusic);
+
+        toggleBtn.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevents triggering startMusic
+            if (music.paused) {
+                music.play();
+                toggleBtn.textContent = 'Pause Music';
+            } else {
+                music.pause();
+                toggleBtn.textContent = 'Play Music';
+            }
+        });
+
+        music.addEventListener('play', () => toggleBtn.textContent = 'Pause Music');
+        music.addEventListener('pause', () => toggleBtn.textContent = 'Play Music');
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

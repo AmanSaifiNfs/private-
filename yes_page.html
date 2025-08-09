@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knew you would say yes!</title>
+    <link rel="stylesheet" href="./yes_style.css">
+</head>
+<style>
+    *{
+        font-family: 'Times New Roman', Times, serif, poppins, arial;
+    }
+    #main-audio{
+        padding: 20px 10px 10px 10px;
+    }
+    .seperate{
+        width: 95vw;
+        padding-top: 70px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <h3 class="header_text">Whatever you say but i still love you forever. Agar ye last fir bhi kyu ki aap ke ane se mujhe sukun ki adat si ho gyi thi.</h3>
+        <h3 style="color: rgb(221, 30, 119);
+        font-weight: 400;">Whatever you say but i still love you forever.</h3>
+        <h3 style="color: rgb(221, 30, 119);">Agar ye last hai fir bhi, kyu ki aap ke ane se mujhe sukun ki adat si ho gyi thi.</h3>
+        
+        <div class="gif_container">
+            <!-- <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif"> -->
+             <img src="i-need-you-498-x-401-gif-5fqtx7zhyam99716.gif" alt="">
+        </div>
+
+        <div class="seperate">
+            <div class="d1">
+                <span>If you say "Yes", Play this!</span>
+                <div>
+                    <audio id="main-audio" controls>
+            <source src="yes.aac">
+        </audio>
+                </div>
+            </div>
+            <div class="d2">
+                <span>If you say "No", Play this!</span>
+                <div>
+                    <audio id="main-audio" controls>
+            <source src="no.aac">
+        </audio>
+                </div>
+            </div>
+            <div class="d3">
+                <span>Kuch jo aap ko batana chata tha</span> 
+                <div>
+                    <audio id="main-audio" controls>
+            <source src="step 4.aac">
+        </audio>
+                </div>
+            </div>
+        </div>
+        <h3 style="color: rgb(121, 1, 57);
+        font-weight: 400;">
+           Agar 'yes' hai to  mujhe turant call karo, aap se baat karne ko taras raha hu. aur agar 'Na' hai to samjunga mera bura waqt tha isliye sayad aap bhi mujhe chor ke chali gyi.
+        </h3>
+        
+    </div>
+</body>
+</html>
+<script>
+document.querySelectorAll('audio').forEach(audio => {
+    audio.addEventListener('play', function() {
+        document.querySelectorAll('audio').forEach(otherAudio => {
+            if (otherAudio !== audio) {
+                otherAudio.pause();
+            }
+        });
+    });
+});
+</script>
